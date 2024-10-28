@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     color: #000000;
@@ -31,30 +30,15 @@ body {
     width: 100%;
     padding: 40px;
 }
-@media (min-width: 768px) {
-    .login-form {
-        margin-top: 60px;
-        max-width: 360px;
-    }
-}
-.css-1wcjc1k {
+.login-heading {
     display: flex;
     -webkit-box-pack: center;
     justify-content: center;
+    padding-top: 22px;
+    padding-bottom: 10px;
 }
-
-.login-form h2 {
-    margin-bottom: 20px;
-    color: #333;
-}
-.css-1pter2 {
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    padding-top: 32px;
-    padding-bottom: 16px;
-}
-.css-1gsao8 {
+.login-title
+ {
     margin: 0px;
    
     font-weight: 400;
@@ -62,150 +46,8 @@ body {
     line-height: 1.334;
     text-align: center;
 }
-/* Input container with floating label */
-.input-container {
-    position: relative;
-    margin: 20px 0;
-}
-
-.css-1mz1i7d {
-    margin: 0px;
-    font-weight: 400;
-    line-height: 1.5;
-    text-align: center;
-    color: rgb(204, 204, 204);
-    font-size: 12px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-}
-
-.floating-input {
-    width: 100%;
-    padding: 6px;
-    border-radius: 4px;
-    border:1px solid rgb(228, 225, 225);
-    
-    font-size: 16px;
-    outline: none;
-}
-
-.floating-label {
-    position: absolute;
-    left: 15px;
-    top: 5px;
-    transition: 0.2s ease all;
-    color: #999;
-    pointer-events: none;
-    background-color: white;
-    /* padding: 0 5px; */
-}
-
-/* Move label up when the input is focused or has content */
-.input-container:focus-within .floating-label,
-.input-container.has-content .floating-label {
-    top: -10px;
-    left: 10px;
-    font-size: 12px;
-    color: #07090b; /* Adjust this color as needed */
-}
-
-.floating-input:focus {
-    border-color: #0c0e0f;
-}
-
-/* Login button */
-/* .login-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: #ff3c00;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.login-button:hover {
-    background-color: #b32d00;
-}
-
-.css-yy14r3 {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-sizing: border-box;
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
-    font-family: Inter;
-    font-weight: 500;
-    font-size: 0.75rem;
-    line-height: 1.75;
-    min-width: 64px;
-    width: 100%;
-    height: 40px;
-    background-color: rgb(252, 100, 45);
-    color: rgb(255, 255, 255);
-    text-transform: none;
-    outline: 0px;
-    border: none;
-    margin: 8px 0px 4px;
-    text-decoration: none;
-    padding: 6px 16px;
-    border-radius: 4px;
-    overflow: hidden; 
-} */
-
-/* .css-yy14r3::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    width: 100%;
-    height: 300px;
-    background-color: rgba(255, 255, 255, 0.5);
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.4s, opacity 0.4s;
-    pointer-events: none;
-}
-
-.css-yy14r3:active::after {
-    transform: scale(1);
-    opacity: 1;
-    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-}
-
-.css-w0pj6f {
-    overflow: hidden;
-    pointer-events: none;
-    position: absolute;
-    z-index: 0;
-    inset: 0px;
-    border-radius: inherit;
-} */
-
-.css-yy14r3 {
-    position: relative;
-    overflow: hidden; /* Needed for ripple effect */
-}
-
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    transform: scale(0);
-    background-color: rgba(255, 255, 255, 0.6);
-    animation: ripple-animation 0.6s linear;
-}
-
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-.css-yy14r3 {
+/* BUTTTON */
+.button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -221,8 +63,63 @@ body {
     padding: 10px;
 }
 
-.css-yy14r3:hover {
-    background-color: rgb(230, 70, 25); /* Slightly darker on hover */
+.button:hover {
+    background-color: rgb(230, 70, 25); 
+}
+.button {
+    position: relative;
+    overflow: hidden; /* Needed for ripple effect */
+}
+
+/* company name */
+.company-name {
+    margin: 0px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    color: rgb(204, 204, 204);
+    font-size: 12px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+/* Input container with floating label */
+.input-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+
+.floating-input {
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border:1px solid rgb(228, 225, 225);
+    font-size: 16px;
+    outline: none;
+}
+
+.floating-label {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    transition: 0.2s ease all;
+    color: #999;
+    pointer-events: none;
+    background-color: white;
+    
+}
+
+/* Move label up when the input is focused or has content */
+.input-container:focus-within .floating-label,
+.input-container.has-content .floating-label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #07090b; 
+}
+
+.floating-input:focus {
+    border-color: #0c0e0f;
 }
 .error-message {
     color:rgb(230, 70, 25);
@@ -233,3 +130,31 @@ body {
     border: 1px solid rgb(230, 70, 25);
     border-radius: 4px;
 }
+
+@media (min-width: 768px) {
+    .login-form {
+        margin-top: 60px;
+        max-width: 360px;
+    }
+}
+/* LOGO */
+.logo {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    background-color: rgba(255, 255, 255, 0.6);
+    animation: ripple-animation 0.6s linear;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
