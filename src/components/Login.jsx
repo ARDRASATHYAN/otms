@@ -38,7 +38,7 @@ const LoginPage = () => {
                     password: values.password
                 }).toString(),
                     {
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' } // Set header for URL encoding
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
                     });
 
                 const token = response.data.access_token;
@@ -85,7 +85,7 @@ const LoginPage = () => {
 
                 {formik.errors.general && <p className="error-message">{formik.errors.general}</p>}
 
-                {/* Submit button */}
+             
                 <Button
                     label="Login"
                     type="submit"

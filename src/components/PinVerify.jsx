@@ -6,6 +6,7 @@ import './login.css';
 import Inputput from './shared/Inputput';
 import Button from './shared/Button';
 import logo from './shared/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = Yup.object({
     pin: Yup.string()
@@ -14,6 +15,7 @@ const validationSchema = Yup.object({
 });
 
 const PinVerify = () => {
+    const navigate=useNavigate()
     const formik = useFormik({
         initialValues: {
             pin: '',
@@ -33,11 +35,11 @@ const PinVerify = () => {
             try {
                 const response = await axios.post(
                     'https://fc.maxence.co.in/v1/bank/validatepin',
-                    new URLSearchParams({
+                    JSON.stringify({
                         mobile: '9447129862',
                         pin: values.pin,
                         DeviceId: '2412341234123',
-                    }).toString(),
+                    }),
                     {
                         headers: {
                             'Authorization': `Bearer ${token}`,
@@ -45,8 +47,10 @@ const PinVerify = () => {
                         }
                     }
                 );
+              
 
                 console.log('PIN verification successful:', response.data);
+                navigate('/')
                 setSubmitting(false);
 
             } catch (error) {
