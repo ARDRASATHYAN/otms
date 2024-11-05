@@ -10,10 +10,8 @@ function App() {
     <div >
       <BrowserRouter>
         <Routes>
-
           <Route path="/" element={token ? <Layout /> : <Navigate to="/login" replace />} />
           <Route path="/" element={<Layout />} />
-
           <Route path="/login" element={<LoginPage />} />
           <Route path="/pin" element={<PinVerify />} />
         </Routes>

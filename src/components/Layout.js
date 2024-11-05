@@ -6,8 +6,8 @@ import axios from 'axios';
 
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [data, setData] = useState(null); 
-  const [loading, setLoading] = useState(true); 
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
@@ -18,21 +18,21 @@ const Layout = () => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          'https://fc.maxence.co.in/v1/bank/info', 
+          'https://fc.maxence.co.in/v1/bank/info',
           JSON.stringify({ id: "F1264" }),
           {
-            headers: {  
+            headers: {
               'Authorization': `Bearer ${token}`,
-              'Content-Type': 'application/json' 
-            } 
+              'Content-Type': 'application/json'
+            }
           }
         );
-        setData(response.data); 
+        setData(response.data);
         setLoading(false);
-        console.log('Fetched data:', response.data); 
+        console.log('Fetched data:', response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -41,20 +41,20 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-screen">
-     
-      
-        <TopBar toggleSidebar={toggleSidebar} name={data?.data.name} />
-      
-   
+
+
+      <TopBar toggleSidebar={toggleSidebar} name={data?.data.name} />
+
+
       <div className="flex flex-1 mt-4 md:mt-0">
-     
-        <div className={`bg-white text-blue-800 w-64 h-full p-10 shadow-lg transition-transform duration-300 ${sidebarOpen ? 'block' : 'hidden'} md:block`}>
+
+        <div className={`bg-white text-blue-800 w-49 h-full pt-4 shadow-lg transition-transform duration-300 ${sidebarOpen ? 'block' : 'hidden'} md:block`}>
           <Sidebar isOpen={sidebarOpen} />
         </div>
 
-        
+
         <div className="flex-1 p-10 transition-all duration-300">
-          {loading ? <p>Loading content...</p> : <MainContent />}
+          <MainContent />
         </div>
       </div>
     </div>

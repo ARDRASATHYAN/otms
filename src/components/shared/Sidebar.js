@@ -16,7 +16,7 @@ const Sidebar = ({ isOpen }) => {
         </a>
         <a href="#Transaction Summary" className="flex items-center p-2 hover:bg-gray-200 rounded font-sans">
           <GrTransaction className="mr-3" />
-          <span>Transaction</span>
+          <span>TransactionSummary</span>
         </a>
         <a href="#Cancelled Summary" className="flex items-center p-2 hover:bg-gray-200 rounded font-sans">
           <FaSignOutAlt className="mr-3" />
