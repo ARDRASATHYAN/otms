@@ -6,9 +6,8 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import Inputput from './shared/Inputput';
 import Button from './shared/Button';
-import logo from './shared/logo.png';
 
-// Define Yup validation schema
+
 const validationSchema = Yup.object({
   oldpin: Yup.string()
     .min(6, 'Password must be at least 6 characters')
@@ -21,7 +20,7 @@ const validationSchema = Yup.object({
 const ValidatPin = () => {
   const navigate = useNavigate();
 
-  // Using Formik for form handling
+ 
   const formik = useFormik({
     initialValues: {
       oldpin: '',
@@ -32,7 +31,7 @@ const ValidatPin = () => {
       const token = localStorage.getItem('token');
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API_URL}/bank/chpin`, // Ensure this is the correct URL
+          `${process.env.REACT_APP_API_URL}/bank/chpin`,
           {
             mobile: '9447129862',
             oldpin: values.oldpin,
@@ -61,7 +60,7 @@ const ValidatPin = () => {
   });
 
   return (
-   
+    <div className="container" style={{display:"flex",justifyContent:"center"}} >
       <form className="login-form" onSubmit={formik.handleSubmit}>
         {/* <div className="logo">
           <img
@@ -76,7 +75,7 @@ const ValidatPin = () => {
           />
         </div> */}
         <div className="login-heading">
-          <h5 className="login-title">Login to OTMS</h5>
+          <h5 className="login-title">CHANGE PIN</h5>
         </div>
 
         <Inputput formik={formik} name="oldpin" label="Old PIN" type="password" />
@@ -85,7 +84,7 @@ const ValidatPin = () => {
         {formik.errors.general && <p className="error-message">{formik.errors.general}</p>}
 
         <Button
-          label="Login"
+          label="submit"
           type="submit"
           disabled={formik.isSubmitting}
           className="button"
@@ -95,6 +94,7 @@ const ValidatPin = () => {
           &copy; Maxence Infotech Private Limited
         </p>
       </form>
+      </div>
    
   );
 };

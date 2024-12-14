@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
-import DataTable from './shared/Datatable'; // Ensure this path is correct
+import DataTable from './shared/Datatable'; 
 
 import { useParams } from 'react-router-dom';
 import { fetchTransactionsDatails } from '../services/Transactionsdetailervice';
@@ -14,10 +14,10 @@ const TransactionDetails= () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          // Call the API service to fetch data
+        
           const result = await fetchTransactionsDatails(BID, token,id);
           
-          // Extract the XML string from the response
+
           const xmlString = result.data;
           const parser = new DOMParser();
           const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
@@ -55,7 +55,7 @@ const TransactionDetails= () => {
   if (data.length === 0) {
     return <div>No data available.</div>;
   }
-   // Apply both filters: by selected name and search query
+  
    
 
   return (
@@ -68,7 +68,7 @@ const TransactionDetails= () => {
    </div>
 
       <div className="w-full">
-        {/* Pass the full data to DataTable */}
+      
         <DataTable columns={["code", "no","name","tdate","rno","amount","balance","status","time"]} data={data} />
       </div>
     </div>

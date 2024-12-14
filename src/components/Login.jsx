@@ -21,10 +21,7 @@ const validationSchema = Yup.object({
 const LoginPage = () => {
     const navigate = useNavigate();
 
-    const clearLocalStorage = () => {
-        localStorage.clear();
-        console.log('All local storage data has been cleared.');
-    };
+    
 
     const formik = useFormik({
         initialValues: {
@@ -33,22 +30,22 @@ const LoginPage = () => {
         },
         validationSchema,
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-            clearLocalStorage();
+            
             try {
-                const { access_token: token, expires_in: expiresIn, bid, bankname, username } = await login(values);
-
+                const { access_token: token, expires_in,refresh_token, bid, bankname, username } = await login(values);
+                const expirationTime = Date.now() + expires_in * 1000;
                 // Store token and other details in localStorage
                 localStorage.setItem('token', token);
                 localStorage.setItem('username', username);
+                localStorage.setItem('refresh_token', refresh_token);
                 localStorage.setItem('bid', bid);
                 localStorage.setItem('bankname', bankname);
-
-                // Calculate expiration time
-                const expirationTime = Date.now() + expiresIn * 1000;
                 localStorage.setItem('tokenExpiration', expirationTime);
 
+             
+
                 
-                console.log('Signin successful:', { token, expiresIn, bid, bankname, username });
+                console.log('Signin successful:', { token,refresh_token, expires_in, bid, bankname, username });
                 navigate('/pin');
                 setSubmitting(false);
                 
@@ -59,14 +56,7 @@ const LoginPage = () => {
             }
         },
     });
-// Optional: Use useEffect to handle token expiration
-useEffect(() => {
-    const expirationTime = localStorage.getItem('tokenExpiration');
-    if (expirationTime && Date.now() >= expirationTime) {
-        clearLocalStorage();
-        navigate('/'); // Navigate to the login page if the token is expired
-    }
-}, [navigate]);
+
 
     return (
         <div className="login-container">

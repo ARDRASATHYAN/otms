@@ -11,17 +11,19 @@ import ValidatPin from './components/ValidatPin';
 import ChangePassword from './components/ChangePassword';
 import TransactionDetails from './components/TransactionDetails';
 import CancelledDetails from './components/CancelledDetails';
+import TokenRefresh from './components/TokenRefresh';
 
 function App() {
   const token = localStorage.getItem('token');
   return (
     <div>
       <Router>
+        <TokenRefresh/>
         <Routes>
          
         <Route path="/pin" element={<PinVerify />} />
        
-          {/* Conditional route based on token */}
+         
           {token ? (
             <>
            

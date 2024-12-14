@@ -53,7 +53,7 @@ const Account_Summery = () => {
     return <div>No data available.</div>;
   }
 
-  // Apply both filters: by selected name and search query
+ 
   const filteredData = data.filter(item => {
     const matchesName = filterType ? item.code === filterType : true;
     const matchesQuery = query ? item.code.toLowerCase().includes(query.toLowerCase()) : true;
@@ -65,7 +65,7 @@ const Account_Summery = () => {
      <div className="flex items-center gap-4 mb-4">
      <div className="font-semibold text-lg p-2">Account Summary</div>
 
-      {/* Dropdown*/}
+     
       <select
         value={filterType}
         onChange={(e) => setFilterType(e.target.value)}
@@ -79,7 +79,7 @@ const Account_Summery = () => {
         ))}
       </select>
 
-     {/* search */}
+
       <div className="relative">
         <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300" />
         <input

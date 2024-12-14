@@ -53,7 +53,7 @@ const Layout = ({ children }) => {
         </div>
 
 
-        {/* Main Content */}
+      
     <div className="flex-1  md:ml-56 overflow-y-auto pt-5">
       {children}
     </div>

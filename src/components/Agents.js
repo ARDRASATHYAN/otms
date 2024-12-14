@@ -24,30 +24,28 @@ const Agents = () => {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlString, 'text/xml');
 
-        // Check if there was a parsing error
+    
         const parserError = xmlDoc.getElementsByTagName('parsererror');
         if (parserError.length > 0) {
           console.error('Error parsing XML:', parserError[0].textContent);
           return;
         }
 
-        // Extract values from the XML
+ 
         const rows = xmlDoc.getElementsByTagName('ROW');
         const parsedData = [];
-        const nameSet = new Set(); // Use a Set to store unique names
-
+        const nameSet = new Set(); 
         for (let i = 0; i < rows.length; i++) {
           const id = rows[i].getElementsByTagName('id')[0]?.textContent;
           const name = rows[i].getElementsByTagName('name')[0]?.textContent;
 
           if (id && name) {
             parsedData.push({ id, name });
-            nameSet.add(name); // Add name to the Set
+            nameSet.add(name); 
           }
         }
 
-        setData(parsedData); // Set the parsed data in the state
-        setNames(Array.from(nameSet)); // Convert Set to Array and set it in state
+        setNames(Array.from(nameSet)); 
       } catch (error) {
         console.error('Error fetching or parsing data:', error);
       }
@@ -56,7 +54,7 @@ const Agents = () => {
     fetchData();
   }, [token]);
 
-  // Apply both filters: by selected name and search query
+  
   const filteredData = data.filter(item => {
     const matchesName = filterType ? item.name === filterType : true;
     const matchesQuery = query ? item.name.toLowerCase().includes(query.toLowerCase()) : true;
@@ -68,7 +66,7 @@ const Agents = () => {
       <div className="flex items-center gap-4 mb-4">
         <div className="font-semibold text-lg p-2">Agents</div>
 
-        {/* Dropdown  */}
+        
         <select
           value={filterType}
           onChange={(e) => setFilterType(e.target.value)}
@@ -82,7 +80,7 @@ const Agents = () => {
           ))}
         </select>
 
-        {/* Search  */}
+   
         <div className="relative">
           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300" />
           <input

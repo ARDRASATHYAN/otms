@@ -30,22 +30,22 @@ const PinVerify = () => {
             try {
          
 
-                // Call the verifyPin method from PinService
+               
                 const response = await verifyPin(
                     token, 
-                   '9447129862', // Example hardcoded mobile number
+                   '9447129862', 
                     values.pin,
-                   '2412341234123', // Example hardcoded deviceId
+                   '2412341234123', 
                 )
 
                 console.log('PIN Verification Response:', response);
                 if (response.status === 'success') {
                 
 
-                    navigate('/home');  // Navigate to home on successful verification
+                    navigate('/home');  
                     window.location.reload();
                 } else {
-                    // Handle failure if response status is not success
+                    
                     setErrors({ general: 'PIN verification failed. Please check your PIN.' });
                 }
             } catch (error) {

@@ -6,15 +6,14 @@ const DataTable = ({ data, columns }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const entriesPerPage = 10;
 
-  // Calculate the total number of pages
+
   const totalPages = Math.ceil(data.length / entriesPerPage);
 
-  // Determine the data for the current page
+  
   const indexOfLastEntry = currentPage * entriesPerPage;
   const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
   const currentData = data.slice(indexOfFirstEntry, indexOfLastEntry);
 
-  // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -22,7 +21,7 @@ const DataTable = ({ data, columns }) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white border border-gray-200">
-        <thead >{/*className="bg-gray-50"*/}
+        <thead >
           <tr>
             {columns.map((column, index) => (
               <th
@@ -36,13 +35,13 @@ const DataTable = ({ data, columns }) => {
         </thead>
         <tbody>
           {currentData.map((row, rowIndex) => (
-            <tr key={rowIndex} > {/*className="even:bg-gray-50"*/}
+            <tr key={rowIndex} > 
               {columns.map((column, colIndex) => (
                 <td
                   key={colIndex}
                   className="px-6 py-2 text-sm text-gray-700 border-b border-r border-gray-200"
                 >
-                  {row[column.toLowerCase()]} {/* Access the data properties dynamically */}
+                  {row[column.toLowerCase()]}
                 </td>
               ))}
             </tr>
@@ -50,7 +49,7 @@ const DataTable = ({ data, columns }) => {
         </tbody>
       </table>
 
-      {/* Pagination Controls */}
+   
       <div className="flex justify-between items-center mt-4">
         <button
           onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}

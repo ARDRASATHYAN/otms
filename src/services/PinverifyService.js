@@ -1,5 +1,3 @@
-// src/services/PinService.js
-
 import axios from 'axios';
 
 /**

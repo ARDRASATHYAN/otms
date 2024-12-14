@@ -8,7 +8,7 @@ import Inputput from './shared/Inputput';
 import Button from './shared/Button';
 import logo from './shared/logo.png';
 
-// Define Yup validation schema
+//  Yup validation schema
 const validationSchema = Yup.object({
   oldpwd: Yup.string()
     .min(8, 'Password must be at least 8 characters')
@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
 const ChangePassword = () => {
   const navigate = useNavigate();
 
-  // Using Formik for form handling
+ 
   const formik = useFormik({
     initialValues: {
       oldpwd: '',
@@ -53,7 +53,6 @@ const ChangePassword = () => {
         console.log('Password change successful:', response);
         setSubmitting(false);
 
-        // Navigate or give feedback to the user upon success
       } catch (error) {
         console.error('Password change failed:', error.response?.data || error.message);
         setErrors({ general: 'Password change failed. Please try again.' });
@@ -63,6 +62,7 @@ const ChangePassword = () => {
   });
 
   return (
+    <div className="container" style={{display:"flex",justifyContent:"center"}} >
     <form className="login-form" onSubmit={formik.handleSubmit}>
       {/* <div className="logo">
         <img
@@ -86,6 +86,7 @@ const ChangePassword = () => {
       {formik.errors.general && <p className="error-message">{formik.errors.general}</p>}
 
       <Button
+
         label="Submit"
         type="submit"
         disabled={formik.isSubmitting}
@@ -94,6 +95,7 @@ const ChangePassword = () => {
 
       <p className="company-name">&copy; Maxence Infotech Private Limited</p>
     </form>
+    </div>
   );
 };
 
