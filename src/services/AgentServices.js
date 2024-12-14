@@ -3,10 +3,9 @@ import axios from 'axios';
 
 export const fetchAgentData = async (BID, token) => {
   try {
-
+    
     const apiUrl =  `${process.env.REACT_APP_API_URL}/bank/agents`;
 
- 
     const response = await axios.post(
       apiUrl,
       JSON.stringify({ id: BID }),
@@ -18,6 +17,7 @@ export const fetchAgentData = async (BID, token) => {
       }
     );
 
+ 
     return response.data;
   } catch (error) {
     console.error('Error fetching data from API:', error);
