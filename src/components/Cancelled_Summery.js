@@ -5,7 +5,7 @@ import { fetchCancelledData } from '../services/CancelledService';
 import { useNavigate } from 'react-router-dom';
 
 const Cancelled_Summery = () => {
-
+const navigate=useNavigate()
   const [query, setQuery] = useState('');
   const [filterType, setFilterType] = useState(''); 
   const [data, setData] = useState([]);
