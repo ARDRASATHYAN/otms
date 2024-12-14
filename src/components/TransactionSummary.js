@@ -66,7 +66,7 @@ const navigate=useNavigate()
   return (
     <div>
     <div className="flex items-center gap-4 mb-4">
-  <div className="font-semibold text-lg p-2">Transaction Summary Summary</div>
+  <div className="font-semibold text-lg p-2">Transaction Summary</div>
 
  
    <select
