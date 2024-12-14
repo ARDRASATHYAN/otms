@@ -9,7 +9,7 @@ module.exports = {
         sans: ['Inter', 'sans-serif'], // Add Inter as the default sans font
       },
       colors: {
-        customPurple: '#5900b3', // Add your custom color here
+        customPurple: '#2980b9', // Add your custom color here
       },
     },
   },

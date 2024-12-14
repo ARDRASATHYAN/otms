@@ -1,12 +1,13 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
 import './login.css';
 import Inputput from './shared/Inputput';
 import Button from './shared/Button';
 import logo from './shared/logo.png';
 import { useNavigate } from 'react-router-dom';
+import { verifyPin } from '../services/PinverifyService';
+
 
 const validationSchema = Yup.object({
     pin: Yup.string()
@@ -15,7 +16,8 @@ const validationSchema = Yup.object({
 });
 
 const PinVerify = () => {
-    const navigate=useNavigate()
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
     const formik = useFormik({
         initialValues: {
             pin: '',
@@ -23,51 +25,41 @@ const PinVerify = () => {
         validationSchema,
         onSubmit: async (values, { setSubmitting, setErrors }) => {
             const token = localStorage.getItem('token');
-            console.log('token', token);
-
-
-            if (!token) {
-                setErrors({ general: 'No token found. Please log in first.' });
-                setSubmitting(false);
-                return;
-            }
+            
 
             try {
-                const response = await axios.post(
-                    'https://fc.maxence.co.in/v1/bank/validatepin',
-                    JSON.stringify({
-                        mobile: '9447129862',
-                        pin: values.pin,
-                        DeviceId: '2412341234123',
-                    }),
-                    {
-                        headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Content-Type': 'application/json',
-                        }
-                    }
-                );
-              
+         
 
-                console.log('PIN verification successful:', response.data);
-                navigate('/')
-                setSubmitting(false);
+                // Call the verifyPin method from PinService
+                const response = await verifyPin(
+                    token, 
+                   '9447129862', // Example hardcoded mobile number
+                    values.pin,
+                   '2412341234123', // Example hardcoded deviceId
+                )
 
+                console.log('PIN Verification Response:', response);
+                if (response.status === 'success') {
+                
+
+                    navigate('/home');  // Navigate to home on successful verification
+                    window.location.reload();
+                } else {
+                    // Handle failure if response status is not success
+                    setErrors({ general: 'PIN verification failed. Please check your PIN.' });
+                }
             } catch (error) {
-                console.error('PIN verification failed:', error.response?.data || error.message);
-                setErrors({ general: 'PIN verification failed. Please check your PIN.' });
-                setSubmitting(false);
+                console.error('PIN verification failed:', error.message);
+                setErrors({ general: 'PIN verification failed. Please check your PIN or try again later.' });
             }
+            setSubmitting(false);
         },
     });
-
-
 
     return (
         <div className="login-container">
             <form className="login-form" onSubmit={formik.handleSubmit}>
-                <div className=" logo">
-
+                <div className="logo">
                     <img
                         src={logo}
                         alt="Logo"
@@ -78,27 +70,28 @@ const PinVerify = () => {
                             margin: '0 auto',
                         }}
                     />
-
                 </div>
                 <div className="login-heading">
                     <h5 className="login-title">Pin Verify</h5>
                 </div>
-                <Inputput formik={formik} name="pin" label="pin" type="text" />
-
-
+                <Inputput formik={formik} name="pin" label="PIN" type="text" />
+                {formik.errors.general && (
+                    <div className="error-message">
+                        <p>{formik.errors.general}</p>
+                    </div>
+                )}
                 <Button
-                    label="verify"
+                    label="Verify"
                     type="submit"
                     disabled={formik.isSubmitting}
                     className="button"
                 />
-
                 <p className="company-name">
                     &copy; Maxence Infotech Private Limited
                 </p>
             </form>
         </div>
-    )
-}
+    );
+};
 
 export default PinVerify;
