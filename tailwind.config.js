@@ -10,6 +10,7 @@ module.exports = {
       },
       colors: {
         customPurple: '#2980b9', // Add your custom color here
+        customblue:'#7db8d9',
       },
     },
   },

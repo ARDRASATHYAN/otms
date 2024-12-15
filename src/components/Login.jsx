@@ -42,6 +42,7 @@ const LoginPage = () => {
                 localStorage.setItem('bankname', bankname);
                 localStorage.setItem('tokenExpiration', expirationTime);
 
+             console.log(token);
              
 
                 
