@@ -18,7 +18,7 @@ const validationSchema = Yup.object({
         .required('Password is required'),
 });
 
-const LoginPage = () => {
+const LoginPage = ({setToken}) => {
     const navigate = useNavigate();
 
     
@@ -43,7 +43,7 @@ const LoginPage = () => {
                 localStorage.setItem('tokenExpiration', expirationTime);
 
              console.log(token);
-             
+             setToken(token)
 
                 
                 console.log('Signin successful:', { token,refresh_token, expires_in, bid, bankname, username });

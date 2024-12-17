@@ -12,13 +12,14 @@ import ChangePassword from './components/ChangePassword';
 import TransactionDetails from './components/TransactionDetails';
 import CancelledDetails from './components/CancelledDetails';
 import TokenRefresh from './components/TokenRefresh';
+import { useState } from 'react';
 
 function App() {
-  const token = localStorage.getItem('token');
+  const [token, setToken] = useState(localStorage.getItem('token'));
   return (
     <div>
       <Router>
-        <TokenRefresh/>
+        <TokenRefresh />
         <Routes>
          
         <Route path="/pin" element={<PinVerify />} />
@@ -26,7 +27,7 @@ function App() {
          
           {token ? (
             <>
-           
+
               {/* <Route path="/home" element={<Layout />} /> */}
               <Route path="/validatepin" element={<Layout><ValidatPin /></Layout>} />
               <Route path="/changepassword" element={<Layout><ChangePassword /></Layout>} />
@@ -34,11 +35,11 @@ function App() {
               <Route path="/accounts" element={<Layout><Account_Summery /></Layout>} />
               <Route path="/trans" element={<Layout><TransactionSummary /></Layout>} />
               <Route path="/cancel" element={<Layout><Cancelled_Summery /></Layout>} />
-              <Route path="/transaction/:id" element={<Layout><TransactionDetails/></Layout>} />
-              <Route path="/canceldetail/:id" element={<Layout><CancelledDetails/></Layout>} />
+              <Route path="/transaction/:id" element={<Layout><TransactionDetails /></Layout>} />
+              <Route path="/canceldetail/:id" element={<Layout><CancelledDetails /></Layout>} />
             </>
           ) : (
-            <Route path="/" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage setToken={setToken} />} />
           )}
 
           {/* Redirect if no matching route */}

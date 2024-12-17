@@ -17,19 +17,20 @@ const validationSchema = Yup.object({
 
 const PinVerify = () => {
     const navigate = useNavigate();
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     const formik = useFormik({
         initialValues: {
             pin: '',
         },
         validationSchema,
         onSubmit: async (values, { setSubmitting, setErrors }) => {
-            const token = localStorage.getItem('token');
+            // const token = localStorage.getItem('token');
             
 
             try {
          
-
+                const token = localStorage.getItem('token');
+                console.log('Token:', localStorage.getItem('token'));
                
                 const response = await verifyPin(
                     token, 
@@ -37,13 +38,14 @@ const PinVerify = () => {
                     values.pin,
                    '2412341234123', 
                 )
-
+                navigate('/home');  
                 console.log('PIN Verification Response:', response);
+                console.log('Response status:', response.status);
                 if (response.status === 'success') {
                 
-
+console.log(navigate,"mavigte")
                     navigate('/home');  
-                    window.location.reload();
+                    // window.location.reload();
                 } else {
                     
                     setErrors({ general: 'PIN verification failed. Please check your PIN.' });
